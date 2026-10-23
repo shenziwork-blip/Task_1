@@ -15,10 +15,40 @@ class TestIngredient:
             (INGREDIENT_TYPE_SAUCE, "test sauce", 150.5),
         ]
     )
-    def test_ingredient_getters(self, ingredient_type, name, price):
+    def test_get_type(self, ingredient_type, name, price):
         ingredient = Ingredient(ingredient_type, name, price)
 
         assert ingredient.get_type() == ingredient_type
+
+    @pytest.mark.parametrize(
+        "ingredient_type, name, price",
+        [
+            (INGREDIENT_TYPE_SAUCE, "hot sauce", 100),
+            (INGREDIENT_TYPE_FILLING, "cutlet", 100),
+            (INGREDIENT_TYPE_SAUCE, "sour cream", 200),
+            (INGREDIENT_TYPE_FILLING, "dinosaur", 200),
+            ("", "", 0),
+            (INGREDIENT_TYPE_SAUCE, "test sauce", 150.5),
+        ]
+    )
+    def test_get_name(self, ingredient_type, name, price):
+        ingredient = Ingredient(ingredient_type, name, price)
+
         assert ingredient.get_name() == name
+
+    @pytest.mark.parametrize(
+        "ingredient_type, name, price",
+        [
+            (INGREDIENT_TYPE_SAUCE, "hot sauce", 100),
+            (INGREDIENT_TYPE_FILLING, "cutlet", 100),
+            (INGREDIENT_TYPE_SAUCE, "sour cream", 200),
+            (INGREDIENT_TYPE_FILLING, "dinosaur", 200),
+            ("", "", 0),
+            (INGREDIENT_TYPE_SAUCE, "test sauce", 150.5),
+        ]
+    )
+    def test_get_price(self, ingredient_type, name, price):
+        ingredient = Ingredient(ingredient_type, name, price)
+
         assert ingredient.get_price() == price
         
